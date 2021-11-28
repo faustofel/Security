@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HELLO USER!</title>
+</head>
+    <body>
+        <h3 align="center">HELLO <span th:text="${user.userName}"></span> !!!</h3>
+        <div align="center">
+            <br>
+            YOUR USERNAME IS : <span th:text="${user.userName}"></span>
+            <br>
+            YOUR ROLES ARE : <span th:each="role,state:${user.roleSet}"> <span th:text="${role.role}"></span> </span>
+            <br><br>
+            <a href = "/user/userProfile">YOUR PROFILE HERE</a>
+            <br>
+        </div>
+        <h3 align="center"><a href="/logout">YOU CAN LOGOUT HERE</a></h3>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EDIT USER</title>
+</head>
+    <body align="center">
+        <h3>EDIT USER</h3>
+        <table border="1" align="center">
+            <tr>
+                <th>ID</th>
+                <th>USERNAME</th>
+                <th>PASSWORD</th>
+                <th>ROLES</th>
+                <th>UPDATE</th>
+            </tr>
+                <td th:utext="${edituser.id}">ID</td>
+                <td th:utext="${edituser.username}">USERNAME</td>
+                <td> * * * * * </td>
+                <td> <span th:each="role:${edituser.roleSet}"> <span th:text="${role.role}"></span><br></span> </td>
+                <td></td>
+            </tr>
+            <tr>
+                <form th:method="PATCH" th:action="@{/admin/usersManagementMain}" th:object="${edituser}">
+                    <td colspan="2" align="right">UPDATE USER:</td>
+                    <input type="hidden" th:field="*{id}" id="id"/>
+                    <td><input type="text" th:field="*{userName}"/></td>
+                    <td><input type="text" th:field="*{password}"/></td>
+                    <td><span th:each="role:${allroles}"><input type="checkbox" name="roleId" th:value="${role.id}"/><label th:utext="${role.role}"></label><br></span></td>
+                    <td align="center"><input type="submit" value="UPDATE"/></td>
+                </form>
+            </tr>
+        </table>
+        <h3 align="center"><a href="/logout">YOU CAN LOGOUT HERE</a></h3>
+    </body>
+</html>
